@@ -110,17 +110,21 @@ public class DataBase {
     
     }
     
-    public void RegistrarAlumno(String nombre,String Password){
+    public void RegistrarAlumno(String nombre,String Password,String NombreCompleto){
     
          
             
         try {
-            String insert="INSERT INTO Alumno (Nombre,Password) VALUES(?, ?)";
+            String insert="INSERT INTO Alumno (Nombre,Password,NombreCompleto) VALUES(?, ?, ?)";
             
             PreparedStatement st= cn.prepareStatement(insert);
-            
+            System.out.println(nombre+" "+ Password);
             st.setString(1, nombre);
+            
             st.setString(2, Password);
+            
+            st.setString(3,NombreCompleto);
+            
             
             
             if(st.executeUpdate()>0){
@@ -129,7 +133,7 @@ public class DataBase {
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
                
         
