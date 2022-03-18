@@ -4,6 +4,8 @@
  */
 package Interfaz;
 
+import conexion.DataBase;
+
 /**
  *
  * @author xavie
@@ -13,9 +15,22 @@ public class Registrar extends javax.swing.JFrame {
     /**
      * Creates new form Registrar
      */
+    
+    
+    DataBase bd=new DataBase();
+    
     public Registrar() {
         initComponents();
+        
+        
+        
+        
+        
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

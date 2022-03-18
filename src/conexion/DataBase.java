@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,9 +30,16 @@ public class DataBase {
     
     conectar conector= new conectar();
     Connection cn;
+    
+    
     public void link(){
     
         cn=conector.conectar();
+        
+        
+        
+        
+        
     
     
     
@@ -41,10 +49,11 @@ public class DataBase {
     public int BuscarAlumno(String Nombre,String Password){
         try {
             link();
-            String inset= "SELECT Id,Nombre,Password WHERE Nombre = '  "   + Nombre +  " ' ";
+            String inset= "SELECT Id,Nombre,Password FROM Alumno";
             
             
             Statement d=cn.createStatement();
+            
             ResultSet rs= d.executeQuery(inset);
             
             
@@ -54,9 +63,18 @@ public class DataBase {
                 String password=rs.getString(3);
                 
                 
+                System.out.println(name+" "+password);
                 
-                if(name.equals(Nombre)&&Password.equals(Password)){
+                
+                
+                
+                
+                
+                if(name.equals(Nombre)&&Password.equals(password)){
+                    System.out.println("Inicio");
                     return rs.getInt(1);
+                    
+                    
                 
                 
                 
@@ -85,6 +103,37 @@ public class DataBase {
         
         
       
+    
+    
+    
+    
+    
+    }
+    
+    public void RegistrarAlumno(String nombre,String Password){
+    
+         
+            
+        try {
+            String insert="INSERT INTO Alumno (Nombre,Password) VALUES(?, ?)";
+            
+            PreparedStatement st= cn.prepareStatement(insert);
+            
+            st.setString(1, nombre);
+            st.setString(2, Password);
+            
+            
+            if(st.executeUpdate()>0){
+                System.out.println("Exito");
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
+        
+    
     
     
     
@@ -141,6 +190,15 @@ public class DataBase {
     
     
     }
+    
+    
+    
+   
+    
+    
+    
+    
+    
     
     
    
