@@ -4,6 +4,8 @@
  */
 package Interfaz;
 
+import conexion.DataBase;
+
 /**
  *
  * @author xavie
@@ -13,9 +15,56 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    
+    DataBase bd= new DataBase();
+    
+    
+    
+    
+    
+    
     public Login() {
+        
+        
+        
+        
         initComponents();
     }
+    public int LoginMaestro(){
+    
+    
+    
+        return 0;
+    
+    
+    
+    }
+    
+    
+    public int LoginEstudiante(){
+    
+    
+    
+    
+    
+        return 0;
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
